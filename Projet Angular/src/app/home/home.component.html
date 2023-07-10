@@ -1,0 +1,28 @@
+<header class="bg-dark-light">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="hidden lg:flex lg:gap-x-12"> 
+        <a routerLink="/home" class="text-sm font-semibold leading-6 text-light">Produits</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-light">Marketplace</a>
+        <a href="#" class="text-sm font-semibold leading-6 text-light">Company</a>
+        <input type="text" name="search" id="search" [(ngModel)]="search" class="block w-96 rounded-md border-0 py-1.5 pl-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple sm:text-sm sm:leading-2" placeholder="Recherche">
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="#" class="text-sm font-semibold leading-6 text-light">Votre panier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <a routerLink="/login" class="text-sm font-semibold leading-6 text-light">Se connecter</a>
+      </div>
+    </nav>
+</header>
+
+<div class="bg-dark">
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:max-w-max lg:px-8">  
+        <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-x-8">
+            <a routerLink="/produit/{{ p.id }}" class="group" *ngFor="let p of produits | filterBy: ['designation']:search">
+                <div class="aspect-h-1 aspect-w-1 w-200 overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                <img src="{{ p.image }}" alt="Produit" class="h-60 w-60 object-cover object-center group-hover:opacity-75 transition-all duration-200">
+                </div>
+                <h3 class="mt-4 text-sm text-light">{{ p.designation }}</h3>
+                <p class="mt-1 text-lg font-medium text-light">{{ p.prixUnitaire }}€</p>
+            </a>
+        </div>
+    </div>
+</div>
